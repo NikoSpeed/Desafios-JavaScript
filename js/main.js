@@ -1,55 +1,75 @@
-let pocionVida = prompt("Cuantas pociones de vida tenes?")
-let pocionMana = prompt("Cuantas pociones de mana tenes?")
-let vidaBoss = 100
+let cantAmuletos = parseInt(prompt("Cuantos amuletos vas a llevar?"))
+let cantMascaras = parseInt(prompt("Cuantas mascaras queres?"))
+let cantVasijas = parseInt(prompt("Cuantas vasijas necesitas?"))
 
-let cantPociones = pocionMana + pocionVida;
-Pociones(cantPociones)
+const precioAmuleto = 30
+const precioMascara = 120
+const precioVasija = 80
 
-function Pociones(cantPociones){
-    if (cantPociones <= 0){
-        console.log("No tenes pociones");
-    }
-    else if(cantPociones <= 5){
-        console.log("Tenes algunas pociones")
-    }
-    else if(cantPociones > 6){
-        console.log("Tenes muchas pociones")
-    }
-}
+const stockAmuleto = 20
+const stockMascara = 9
+const stockVasija = 12
 
-let cantNivel = prompt("Cuanto nivel tiene tu personaje?")
-VerificarNivel(cantNivel)
+calculoPrecioAmuleto(cantAmuletos, precioAmuleto, stockAmuleto)
+calculoPrecioMascara(cantMascaras, precioMascara, stockMascara)
+calculoPrecioVasija(cantVasijas, precioVasija, stockVasija)
 
-function VerificarNivel(cantNivel){
-    if(cantNivel <= 3){
-        switch(cantNivel){
-            case "0":
-                console.log("Personaje sin nivel")
-                break;
-            case "1":
-                console.log("Personaje nivel 1")
-                break;
-            case "2":
-                console.log("Personaje nivel 2")
-                break;
-            case "3":
-                console.log("Personaje nivel 3")
-                break;
-        }
+function calculoPrecioAmuleto(cantidadPedidaA, precioA, stockA){
+    if (stockA >= cantidadPedidaA){
+    let precioCalculado = precioA * cantidadPedidaA
+    alert("El precio final por los amuletos es de "+ precioCalculado + " pesos")
     }
     else{
-        console.log("Tu personaje tiene nivel de sobra")
+        alert("No hay stock de Amuletos suficiente")
     }
 }
 
-CalculoDerrota(pocionMana,pocionVida,cantNivel,vidaBoss)
-function CalculoDerrota(pocionM,pocionV,jugador,boss){
-    const habilidadJugador = (pocionM + pocionV) * jugador
-    if(vidaBoss - habilidadJugador <= 0){
-        alert("Felicidades! Derrotaste al Boss")
+function calculoPrecioMascara(cantidadPedidaM, precioM, stockM){
+    if (stockM >= cantidadPedidaM){
+        let precioCalculado = precioM * cantidadPedidaM
+        alert("El precio final por las masacaras es de "+ precioCalculado + " pesos")
     }
     else{
-        alert("Has muerto")
+        alert("No hay stock de Mascaras suficiente")
     }
 }
-console.log("Game Over")
+
+function calculoPrecioVasija(cantidadPedidaV, precioV, stockV){
+    if (stockV >= cantidadPedidaV){
+        let precioCalculado = precioV * cantidadPedidaV
+        alert("El precio final por las vasijas es de "+ precioCalculado + " pesos")
+    }
+    else{
+        alert("No hay stock de Vasijas suficiente")
+    }
+}
+
+alert("Gracias por su compra, a continuacion le llevaremos a una nueva seccion de creacion de amuletos")
+
+
+let cantHacer = parseInt(prompt("Cuantos amuletos quieres crear?"))
+
+class Amuleto{
+    constructor(nombre, precio, utilidad){
+        this.nombre = nombre;
+        this.precio = precio;
+        this.utilidad = utilidad;
+    }
+}
+
+
+for (i = cantHacer; i > 0; i--) {
+    let nombreAmuleto = prompt("Ingrese nombre del Amuleto")
+    let precioAmuleto = parseInt(prompt("Ingrese precio del Amuleto"))
+    let utilidadAmuleto = prompt("Describa la utilidad del Amuleto")
+
+    const Amuletos = []
+    Amuletos.push(new Amuleto(nombreAmuleto, precioAmuleto, utilidadAmuleto))
+
+    for (const datos of Amuletos){
+        console.log(datos.nombre);
+        console.log(datos.precio);
+        console.log(datos.utilidad);
+    }
+}
+
