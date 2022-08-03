@@ -80,3 +80,4 @@ function respuestaClick(){
     alert(cantVasijas + " Vasijas")
     alert(cantAmuletos + cantMascaras + cantVasijas + " Productos en total")
 }
+//HK
