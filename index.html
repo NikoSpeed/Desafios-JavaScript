@@ -5,61 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <title>Desafio Eventos</title>
+    <title>Pre-entregaFinal 2</title>
 </head>
 <body>
     <header>
 
     </header>
-    <button type="button" class="btn btn-info" id="btnPrincipal">Productos</button>
-    <br>
-    <br>
-    <label for="name">Ingrese cantidad de Amuletos:</label>
-    <input id="btnAmuleto" type="number">
-    <button type="button" onclick="capturarDatoA()">Ingresar</button>
-    <br>
-    <br>
-    <label for="name">Ingrese cantidad de Vasijas:</label>
-    <input id="btnVasija" type="number">
-    <button type="button" onclick="capturarDatoC()">Ingresar</button>
-    <br>
-    <br>
-    <label for="name">Ingrese cantidad de Mascaras:</label>
-    <input id="btnMascara" type="number">
-    <button type="button" onclick="capturarDatoB()">Ingresar</button>
 
-    
-    <section class="container">
-        <div class="parent">
-            <div class="div1"> 
-                <div class="card" style="width: 18rem;">
-                    <img src="imagenes/amuleto.png" class="card-img-top fotos" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Amuleto</h5>
-                      <p class="card-text">Son los encargados de darte habilidades especiales</p>
-                      <a href="#" class="btn btn-primary">Cargar Amuleto</a>
-                    </div>
-                  </div>
-                  <div class="card" style="width: 18rem;">
-                    <img src="imagenes/mascara.png" class="card-img-top fotos" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Mascara</h5>
-                      <p class="card-text">Son los encargados de darte mas vitalidad</p>
-                      <a href="#" class="btn btn-primary">Ver vasijas vida actual</a>
-                    </div>
-                  </div>
-                  <div class="card" style="width: 18rem;">
-                    <img src="imagenes/vasija.png" class="card-img-top fotos" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Vasija</h5>
-                      <p class="card-text">Son el encargado de darte mas poder</p>
-                      <a href="#" class="btn btn-primary">Ver poder actual</a>
-                    </div>
-                  </div>
-            
-            </div>
-            </div>
-    </section>
+    <form class="d-flex">
+      <button class="btn btn-outline-dark" type="submit">
+        <i class="bi-cart-fill me-1"></i>
+        Carrito
+        <span id="cart-total" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+      </button>
+    </form>
+    <br>
+    <form class="d-flex">
+      <button id ="vaciarCarro"class="btn btn-outline-dark" type="submit">
+        <i class="bi-cart-fill me-1"></i>
+        Vaciar Carrito
+        <span id="cart-void" class="badge bg-dark text-white ms-1 rounded-pill"></span>
+      </button>
+    </form>
+
+    <section class="py-5">
+      <div class="container px-4 px-lg-5 mt-5">
+          <div id= "seccion-card" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+          </div>
+      </div>
+  </section>
 
     <footer>
 

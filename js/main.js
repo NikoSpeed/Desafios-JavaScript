@@ -1,63 +1,39 @@
-const precioAmuleto = 30
-const precioMascara = 120
-const precioVasija = 80
-
-const stockAmuleto = 20
-const stockMascara = 9
-const stockVasija = 12
+const carrito = JSON.parse(localStorage.getItem("carrito")) ?? []
+const total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0)
+document.getElementById("cart-total").innerHTML = `${carrito.length} - $${total}`
 
 
+const productos = [
+    {id:1, tipo:"Amuleto", stock: 20, precio: 30},
+    {id:2, tipo:"Mascara", stock: 9, precio: 120},
+    {id:3, tipo:"Vasija", stock: 12, precio:80}
+]
 
-function capturarDatoA(){
-    let botonAmuleto = document.getElementById("btnAmuleto").value;
-    calculoPrecio(botonAmuleto, precioAmuleto, stockAmuleto)
+productos.forEach((producto) => {
+    const idButton = `add-cart${producto.id}`
+    document.getElementById("seccion-card").innerHTML += `<div class="card">
+    <h4>${producto.tipo}</h4>
+    <div class="precio">
+    <p>$${producto.precio}</p>
+    </div>
+    <p> Este es un producto </p>
+    <a class="boton" id=${idButton} data-id="${producto.id} "href="#"> Agregar al carrito </a>
+    </div>`
+})
+
+productos.forEach((producto) => {
+    const idButton = `add-cart${producto.id}`
+    document.getElementById(idButton).addEventListener("click", () => {
+        carrito.push(producto)
+        localStorage.setItem("carrito", JSON.stringify(carrito))
+        const total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0)
+        document.getElementById("cart-total").innerHTML = `${carrito.length} - $${total}`
+        console.log(carrito)
+    })
+})
+
+let boton = document.getElementById("vaciarCarro")
+boton.addEventListener("click", vaciarCarrito)
+function vaciarCarrito(){
+    localStorage.clear()
 }
-function capturarDatoB(){
-    let botonMascara = document.getElementById("btnMascara").value;
-    calculoPrecio(botonMascara, precioMascara, stockMascara)
-}
-function capturarDatoC(){
-    let botonVasija = document.getElementById("btnVasija").value;
-    calculoPrecio(botonVasija, precioVasija, stockVasija)
-}
-
-
-function calculoPrecio(cantidadPedida, precio, stock){
-    if (precio == 30 && stock >= cantidadPedida){
-        let precioCalculado = precio * cantidadPedida
-    alert("El coste de los amuletos es de "+ precioCalculado + " pesos")
-    }
-    else if (precio == 30 && stock <= cantidadPedida)
-    {
-        alert("No hay stock de Amuletos suficiente")
-    }
-    
-    else if (precio == 120 && stock >= cantidadPedida){
-        let precioCalculado = precio * cantidadPedida
-    alert("El precio final por las mascaras es de "+ precioCalculado + " pesos")
-    }
-    else if(precio == 120 && stock <= cantidadPedida){
-        alert("No hay stock de Mascaras suficiente")
-    }
-
-    else if(precio == 80 && stock >= cantidadPedida){
-        let precioCalculado = precio * cantidadPedida
-    alert("El precio final por las vasijas es de "+ precioCalculado + " pesos")
-    }
-    else if(precio == 80 && stock <= cantidadPedida){
-        alert("No hay stock de Vasijas suficiente")
-    }
-}
-
-let boton = document.getElementById("btnPrincipal")
-boton.addEventListener("click", respuestaClick)
-function respuestaClick(){
-    let botonAmuleto = document.getElementById("btnAmuleto").value;
-    let botonMascara = document.getElementById("btnMascara").value;
-    let botonVasija = document.getElementById("btnVasija").value;
-    alert("La cantidad de productos seleccionados fueron: ")
-    alert(botonAmuleto + " Amuletos")
-    alert(botonMascara + " Mascaras")
-    alert(botonVasija + " Vasijas")
-}
-//HK
