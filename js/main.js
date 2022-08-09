@@ -32,8 +32,8 @@ productos.forEach((producto) => {
     })
 })
 
-let boton = document.getElementById("vaciarCarro")
+/*let boton = document.getElementById("vaciarCarro")
 boton.addEventListener("click", vaciarCarrito)
 function vaciarCarrito(){
-    localStorage.clear()
-}
+    carrito = []
+}*/
