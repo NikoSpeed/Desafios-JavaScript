@@ -1,7 +1,3 @@
-let cantAmuletos = parseInt(prompt("Cuantos amuletos vas a llevar?"))
-let cantMascaras = parseInt(prompt("Cuantas mascaras queres?"))
-let cantVasijas = parseInt(prompt("Cuantas vasijas necesitas?"))
-
 const precioAmuleto = 30
 const precioMascara = 120
 const precioVasija = 80
@@ -10,17 +6,28 @@ const stockAmuleto = 20
 const stockMascara = 9
 const stockVasija = 12
 
-calculoPrecio(cantAmuletos, precioAmuleto, stockAmuleto)
-calculoPrecio(cantMascaras, precioMascara, stockMascara)
-calculoPrecio(cantVasijas, precioVasija, stockVasija)
+
+
+function capturarDatoA(){
+    let botonAmuleto = document.getElementById("btnAmuleto").value;
+    calculoPrecio(botonAmuleto, precioAmuleto, stockAmuleto)
+}
+function capturarDatoB(){
+    let botonMascara = document.getElementById("btnMascara").value;
+    calculoPrecio(botonMascara, precioMascara, stockMascara)
+}
+function capturarDatoC(){
+    let botonVasija = document.getElementById("btnVasija").value;
+    calculoPrecio(botonVasija, precioVasija, stockVasija)
+}
 
 
 function calculoPrecio(cantidadPedida, precio, stock){
     if (precio == 30 && stock >= cantidadPedida){
         let precioCalculado = precio * cantidadPedida
-    alert("El precio final por los amuletos es de "+ precioCalculado + " pesos")
+    alert("El coste de los amuletos es de "+ precioCalculado + " pesos")
     }
-    else if (precio == 30 && stock!= 20)
+    else if (precio == 30 && stock <= cantidadPedida)
     {
         alert("No hay stock de Amuletos suficiente")
     }
@@ -29,7 +36,7 @@ function calculoPrecio(cantidadPedida, precio, stock){
         let precioCalculado = precio * cantidadPedida
     alert("El precio final por las mascaras es de "+ precioCalculado + " pesos")
     }
-    else if(precio == 120 && stock!= 9){
+    else if(precio == 120 && stock <= cantidadPedida){
         alert("No hay stock de Mascaras suficiente")
     }
 
@@ -37,47 +44,20 @@ function calculoPrecio(cantidadPedida, precio, stock){
         let precioCalculado = precio * cantidadPedida
     alert("El precio final por las vasijas es de "+ precioCalculado + " pesos")
     }
-    else if(precio == 80 && stock!= 12){
+    else if(precio == 80 && stock <= cantidadPedida){
         alert("No hay stock de Vasijas suficiente")
-    }
-}
-
-alert("Gracias por su compra, a continuacion le llevaremos a una nueva seccion de creacion de amuletos")
-
-
-let cantHacer = parseInt(prompt("Cuantos amuletos quieres crear?"))
-
-class Amuleto{
-    constructor(nombre, precio, utilidad){
-        this.nombre = nombre
-        this.precio = precio
-        this.utilidad = utilidad
-    }
-}
-
-
-for (i = cantHacer; i > 0; i--) {
-    let nombreAmuleto = prompt("Ingrese nombre del Amuleto")
-    let precioAmuleto = parseInt(prompt("Ingrese precio del Amuleto"))
-    let utilidadAmuleto = prompt("Describa la utilidad del Amuleto")
-
-    const Amuletos = []
-    Amuletos.push(new Amuleto(nombreAmuleto, precioAmuleto, utilidadAmuleto))
-
-    for (const datos of Amuletos){
-        console.log(datos.nombre)
-        console.log(datos.precio)
-        console.log(datos.utilidad)
     }
 }
 
 let boton = document.getElementById("btnPrincipal")
 boton.addEventListener("click", respuestaClick)
 function respuestaClick(){
+    let botonAmuleto = document.getElementById("btnAmuleto").value;
+    let botonMascara = document.getElementById("btnMascara").value;
+    let botonVasija = document.getElementById("btnVasija").value;
     alert("La cantidad de productos seleccionados fueron: ")
-    alert(cantAmuletos + " Amuletos")
-    alert(cantMascaras + " Mascaras")
-    alert(cantVasijas + " Vasijas")
-    alert(cantAmuletos + cantMascaras + cantVasijas + " Productos en total")
+    alert(botonAmuleto + " Amuletos")
+    alert(botonMascara + " Mascaras")
+    alert(botonVasija + " Vasijas")
 }
 //HK
