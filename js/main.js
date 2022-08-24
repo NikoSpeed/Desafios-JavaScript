@@ -2,6 +2,8 @@ const carrito = JSON.parse(localStorage.getItem("carrito")) ?? []
 const total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0)
 document.getElementById("cart-total").innerHTML = `${carrito.length} - $${total}`
 
+
+const actualizarCarrito = () => {
 fetch('productos.json')
 .then((response) => response.json())
 .then(infromacion => {
@@ -26,7 +28,10 @@ fetch('productos.json')
         </div>`
     })
     document.getElementById("seccion-card").innerHTML = acumulador;
-})
+  })
+}
+
+actualizarCarrito()
 
 fetch('productos.json')
 .then((response) => response.json())
@@ -43,9 +48,14 @@ infromacion.forEach((producto) => {
 })
 })
 
-let boton2 = document.getElementById("vaciarCarro")
-  boton2.addEventListener("click", vaciarCarrito)
-function vaciarCarrito(){
-    swal("ERROR", "Esta funcion no está disponible", "error")
-}
+function updateCarrito(carrito) {
+    const total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0)
+    document.getElementById("cart-total").textContent = `${carrito.length} - $${total}`
+    }
+
+const boton2 = document.getElementById("vaciarCarro")
+  boton2.addEventListener("click", ()=> {
+    carrito.length = 0
+    updateCarrito()
+  })
 
