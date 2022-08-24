@@ -1,0 +1,5 @@
+[
+    {"id":1, "tipo":"Amuleto", "img":"https://static.wikia.nocookie.net/hollowknight/images/3/34/Kingsoul.png", "stock": 20, "precio": 30},
+    {"id":2, "tipo":"Mascara", "img":"https://static.wikia.nocookie.net/hollowknight/images/2/20/Ancient_Mask.png", "stock": 9, "precio": 120},
+    {"id":3, "tipo":"Vasija", "img":"https://static.wikia.nocookie.net/hollowknight/images/4/4c/Soul_Vessel.png", "stock": 12, "precio":80}
+]
