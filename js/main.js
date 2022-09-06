@@ -50,7 +50,7 @@ infromacion.forEach((producto) => {
 
 function updateCarrito(carrito) {
     const total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0)
-    document.getElementById("cart-total").textContent = `${carrito.length} - $${total}`
+    document.getElementById("cart-total").innerHTML = `${carrito.length} - $${total}`
     }
 
 const boton2 = document.getElementById("vaciarCarro")
